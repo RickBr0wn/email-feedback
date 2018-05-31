@@ -6,20 +6,20 @@ const keys = require('./config/keys')
 require('./models/User')
 require('./services/passport')
 
+const app = express()
+const daysCookieIsAlive = 30*24*60*60*1000 // 30 days in milliseconds
+
 mongoose.connect(keys.mongoURI)
 
 app.use(
   cookieSession({
-    // 30 days in milliseconds
-    maxAge: 30*24*60*60*1000,
+    maxAge: daysCookieIsAlive,
     keys: [keys.cookieKey]
   })
 )
 
 app.use(passport.initialize())
 app.use(passport.session())
-
-const app = express()
 
 require('./routes/authRoutes')(app)
 
