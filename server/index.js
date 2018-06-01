@@ -11,6 +11,7 @@ const daysCookieIsAlive = 30*24*60*60*1000 // 30 days in milliseconds
 
 mongoose.connect(keys.mongoURI)
 
+// Middleware
 app.use(
   cookieSession({
     maxAge: daysCookieIsAlive,
