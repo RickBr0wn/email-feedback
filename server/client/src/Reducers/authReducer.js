@@ -1,8 +1,14 @@
-import React from 'react'
+import { FETCH_USER } from "../Actions/types"
 
-export default function(state = {}, action){
+// import React from 'react'
+export default function(state = null, action){
+  console.log(action)
   switch(action.type){
+    case FETCH_USER:
+      return action.payload || false
+
     default: 
-      return state;
+      return state
+
   }
 }
