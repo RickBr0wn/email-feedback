@@ -4,6 +4,9 @@ import React from 'react'
 // Redux
 import { connect } from 'react-redux'
 
+// Router
+import { Link } from 'react-router-dom'
+
 class Header extends React.Component{
   renderContent(){
     switch(this.props.auth){
@@ -21,9 +24,12 @@ class Header extends React.Component{
     return(
       <nav>
         <div className="nav-wrapper">
-          <a href="" className="left brand-logo">
+          <Link 
+            to={this.props.auth ? '/surveys' : '/'} 
+            className="left brand-logo"
+          >
             eMail-e
-          </a>
+          </Link>
           <ul className="right">
             {this.renderContent()}
           </ul>
